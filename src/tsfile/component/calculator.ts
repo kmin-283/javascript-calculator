@@ -45,9 +45,9 @@ class Calculator {
         this.oper = value! as Operator;
         this.screen.setState(this.prev);
         if (value === '=') {
-          this.value = '0';
           this.operatorPressed = false;
         }
+        this.value = '0';
         break
       case 'Clear':
         this.clear();
@@ -55,6 +55,7 @@ class Calculator {
         break
       case 'Number':
         if (this.oper === '=') this.clear();
+        if (this.value.length === 3) break;
         let newValue = this.value === '0' ? value : this.value+value;
         if (!this.operatorPressed) {
           this.setState(newValue);

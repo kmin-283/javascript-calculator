@@ -1,5 +1,5 @@
 describe("Reg form", () => {
-  it("enter some value", () => {
-    cy.visit()
+  it("", () => {
+    cy.visit('/')
   })
 })
