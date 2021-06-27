@@ -25,6 +25,12 @@ class Calculator {
     });
   }
 
+  clear = () => {
+    this.value = '';
+    this.oper = '';
+    this.prev = '';
+  }
+
   setState = (value: string) => {
     this.value = value;
     this.screen.setState(value);
@@ -39,16 +45,16 @@ class Calculator {
         this.oper = value! as Operator;
         this.screen.setState(this.prev);
         if (value === '=') {
+          this.value = '0';
           this.operatorPressed = false;
         }
         break
       case 'Clear':
-        this.value = '';
-        this.oper = '';
-        this.prev = '';
+        this.clear();
         this.setState('0');
         break
       case 'Number':
+        if (this.oper === '=') this.clear();
         let newValue = this.value === '0' ? value : this.value+value;
         if (!this.operatorPressed) {
           this.setState(newValue);
