@@ -21,8 +21,6 @@ const operate = (prev: string, oper: string, value: string): string => {
       return String(num_prev*num_value);
     case '/':
       return String(Math.floor(num_prev/num_value));
-    case '=':
-      return '';
     default:
       return prev;
   }

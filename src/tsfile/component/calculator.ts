@@ -35,13 +35,17 @@ class Calculator {
       case 'Operator':
         if (this.operatorPressed) return;
         this.operatorPressed = true;
-        console.log(this.prev, this.oper, this.value);
         this.prev = calc(this.prev, this.oper, this.value);
         this.oper = value! as Operator;
         this.screen.setState(this.prev);
-        if (value === '=') this.oper = '';
+        if (value === '=') {
+          this.operatorPressed = false;
+        }
         break
       case 'Clear':
+        this.value = '';
+        this.oper = '';
+        this.prev = '';
         this.setState('0');
         break
       case 'Number':
